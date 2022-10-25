@@ -1,0 +1,35 @@
+
+application {
+  config {
+    baseName franchise,
+    applicationType microservice,
+    packageName ar.edu.um.fi.programacion2,
+    authenticationType jwt,
+    prodDatabaseType mysql,
+  }
+  entities Menu, Venta
+}
+
+entity Menu {
+	nombre String
+    precio Float
+    descripcion String
+    urlImagen String
+    isActive Boolean
+    foreignId Double
+}
+
+entity Venta {
+	fecha Instant
+    precio Float
+	foreignId Double
+}
+
+relationship OneToMany {
+  Menu to Venta
+}
+
+paginate Menu with infinite-scroll
+paginate Venta with pagination
+
+service Menu, Venta with serviceImpl
