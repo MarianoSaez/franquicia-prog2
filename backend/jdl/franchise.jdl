@@ -1,11 +1,16 @@
 
 application {
   config {
-    baseName franchise,
-    applicationType microservice,
-    packageName ar.edu.um.fi.programacion2,
-    authenticationType jwt,
-    prodDatabaseType mysql,
+    baseName franchise
+    applicationType microservice
+    packageName ar.edu.um.fi.programacion2
+    buildTool maven
+    devDatabaseType mariadb
+    prodDatabaseType mariadb
+    authenticationType jwt
+    languages [es,en]
+    nativeLanguage es
+    enableSwaggerCodegen true
   }
   entities Menu, Venta
 }
