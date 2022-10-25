@@ -6,7 +6,7 @@
     <!--
         Added the constraints for entity Venta.
     -->
-    <changeSet id="20221025152835-2" author="jhipster">
+    <changeSet id="20221025160707-2" author="jhipster">
 
         <addForeignKeyConstraint baseColumnNames="menu_id"
                                  baseTableName="venta"

@@ -20,45 +20,45 @@ logging:
     org.hibernate.SQL: DEBUG
     ar.edu.um.fi.programacion2: DEBUG
 
-eureka:
-  instance:
-    prefer-ip-address: true
-  client:
-    service-url:
-      defaultZone: http://admin:${jhipster.registry.password}@localhost:8761/eureka/
+# eureka:
+#   instance:
+#     prefer-ip-address: true
+#   client:
+#     service-url:
+#       defaultZone: http://admin:${jhipster.registry.password}@localhost:8761/eureka/
 
 spring:
   devtools:
     restart:
       enabled: true
-      additional-exclude: static/**,.h2.server.properties
+      additional-exclude: static/**
     livereload:
       enabled: false # we use Webpack dev server + BrowserSync for livereload
   jackson:
     serialization:
       indent-output: true
-  cloud:
-    config:
-      uri: http://admin:${jhipster.registry.password}@localhost:8761/config
-      # name of the config server's property source (file.yml) that we want to use
-      name: franchise
-      profile: dev
-      label: main # toggle to switch to a different version of the configuration as stored in git
-      # it can be set to any label, branch or commit of the configuration source Git repository
+  # cloud:
+  #   config:
+  #     uri: http://admin:${jhipster.registry.password}@localhost:8761/config
+  #     # name of the config server's property source (file.yml) that we want to use
+  #     name: franchise
+  #     profile: dev
+  #     label: main # toggle to switch to a different version of the configuration as stored in git
+  #     # it can be set to any label, branch or commit of the configuration source Git repository
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:h2:file:./target/h2db/db/franchise;DB_CLOSE_DELAY=-1
-    username: franchise
+    url: jdbc:mariadb://localhost:3306/franchise?useLegacyDatetimeCode=false&serverTimezone=UTC
+    username: root
     password:
     hikari:
       poolName: Hikari
       auto-commit: false
-  h2:
-    console:
-      # disable spring boot built-in h2-console since we start it manually with correct configuration
-      enabled: false
+      data-source-properties:
+        cachePrepStmts: true
+        prepStmtCacheSize: 250
+        prepStmtCacheSqlLimit: 2048
+        useServerPrepStmts: true
   jpa:
-    database-platform: tech.jhipster.domain.util.FixedH2Dialect
   liquibase:
     # Remove 'faker' if you do not want the sample data to be loaded automatically
     contexts: dev, faker
@@ -110,7 +110,7 @@ jhipster:
     authentication:
       jwt:
         # This token must be encoded using Base64 and be at least 256 bits long (you can type `openssl rand -base64 64` on your command line to generate a 512 bits one)
-        base64-secret: NTg0MzZkYTYyNTIzNzUzNDg1MWZjZjEwYjZlYWRlNzkxNmY1NGJkNDYyYTEyNWFlZjYxODU2OWMzNjAxMDUwYjdkMmZjOGJlMTJjODgwMDA5ZGFhMTNmZTAyODMxNzA4NmFkZDdlNWFiY2Q1MTkyMWUyMWMyZDZiMmMzYjM2Mjg=
+        base64-secret: OTI5ODNkMzJhM2U4MTEzOWUyMDVhZDE4YzFkZmRjZWNjYjhlZDVlMDNiYWE1ZDM1MTU4Y2QwNDYyZTgyYzIxMDM3NzJhNGYwNWVmYWYwZWU2Y2E4Njg4NjliNTkxYTg5NWFiOGMzZTg0ODczNDdlMDlkNGE2NzUwMjYzMmE3Yzg=
         # Token is valid 24 hours
         token-validity-in-seconds: 86400
         token-validity-in-seconds-for-remember-me: 2592000

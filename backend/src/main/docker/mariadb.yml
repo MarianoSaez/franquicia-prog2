@@ -1,8 +1,8 @@
 # This configuration is intended for development purpose, it's **your** responsibility to harden it for production
 version: '3.8'
 services:
-  franchise-mysql:
-    image: mysql:8.0.28
+  franchise-mariadb:
+    image: mariadb:10.7.1
     # volumes:
     #   - ~/volumes/jhipster/franchise/mysql/:/var/lib/mysql/
     environment:

@@ -38,6 +38,20 @@ JHipster Control Center can help you manage and control your application(s). You
 docker-compose -f src/main/docker/jhipster-control-center.yml up
 ```
 
+### Doing API-First development using openapi-generator
+
+[OpenAPI-Generator]() is configured for this application. You can generate API code from the `src/main/resources/swagger/api.yml` definition file by running:
+
+```bash
+./mvnw generate-sources
+```
+
+Then implements the generated delegate classes with `@Service` classes.
+
+To edit the `api.yml` definition file, you can use a tool such as [Swagger-Editor](). Start a local instance of the swagger-editor using docker by running: `docker-compose -f src/main/docker/swagger-editor.yml up -d`. The editor will then be reachable at [http://localhost:7742](http://localhost:7742).
+
+Refer to [Doing API-First development][] for more details.
+
 ## Building for production
 
 ### Packaging as jar
@@ -104,16 +118,16 @@ For more information, refer to the [Code quality page][].
 
 You can use Docker to improve your JHipster development experience. A number of docker-compose configuration are available in the [src/main/docker](src/main/docker) folder to launch required third party services.
 
-For example, to start a mysql database in a docker container, run:
+For example, to start a mariadb database in a docker container, run:
 
 ```
-docker-compose -f src/main/docker/mysql.yml up -d
+docker-compose -f src/main/docker/mariadb.yml up -d
 ```
 
 To stop it and remove the container, run:
 
 ```
-docker-compose -f src/main/docker/mysql.yml down
+docker-compose -f src/main/docker/mariadb.yml down
 ```
 
 You can also fully dockerize your application and all the services that it depends on.
@@ -147,3 +161,6 @@ To configure CI for your project, run the ci-cd sub-generator (`jhipster ci-cd`)
 [setting up continuous integration]: https://www.jhipster.tech/setting-up-ci/
 [node.js]: https://nodejs.org/
 [npm]: https://www.npmjs.com/
+[openapi-generator]: https://openapi-generator.tech
+[swagger-editor]: https://editor.swagger.io
+[doing api-first development]: https://www.jhipster.tech/doing-api-first-development/

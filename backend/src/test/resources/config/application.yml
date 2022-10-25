@@ -21,9 +21,6 @@ eureka:
     instanceId: franchise:${spring.application.instance-id:${random.value}}
 
 spring:
-  profiles:
-    # Uncomment the following line to enable tests against production database type rather than H2, using Testcontainers
-    #active: testcontainers
   application:
     name: franchise
   cloud:
@@ -108,7 +105,7 @@ jhipster:
     authentication:
       jwt:
         # This token must be encoded using Base64 (you can type `echo 'secret-key'|base64` on your command line)
-        base64-secret: NTg0MzZkYTYyNTIzNzUzNDg1MWZjZjEwYjZlYWRlNzkxNmY1NGJkNDYyYTEyNWFlZjYxODU2OWMzNjAxMDUwYjdkMmZjOGJlMTJjODgwMDA5ZGFhMTNmZTAyODMxNzA4NmFkZDdlNWFiY2Q1MTkyMWUyMWMyZDZiMmMzYjM2Mjg=
+        base64-secret: OTI5ODNkMzJhM2U4MTEzOWUyMDVhZDE4YzFkZmRjZWNjYjhlZDVlMDNiYWE1ZDM1MTU4Y2QwNDYyZTgyYzIxMDM3NzJhNGYwNWVmYWYwZWU2Y2E4Njg4NjliNTkxYTg5NWFiOGMzZTg0ODczNDdlMDlkNGE2NzUwMjYzMmE3Yzg=
         # Token is valid 24 hours
         token-validity-in-seconds: 86400
 # ===================================================================
